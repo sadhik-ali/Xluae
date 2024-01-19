@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>EXCEL - Educational Services</title>
+  <link rel="icon" href="{% static 'web/images/favicon.png' %}" type="image/x-icon" />
+  <meta name="description" content="Excel Educational Services">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS Dependencies -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'web/css/excel.css' %}">
+  <link rel="stylesheet" href="{% static 'web/css/excel-extras.css' %}">
+</head>
+
+<body class="excel-landing-page">
+  <!-- Welcome Section -->
+  <div class="welcome d-flex justify-content-center flex-column h-100v">
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-dark pt-4 px-0">
+        <a class="navbar-brand" href="/">
+          <img src="{% static 'web/images/excel.png' %}" class="mr-2" alt="Excel">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'web:football_academy' %}">Football Academy</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'web:magazine' %}">Edu Magazine</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink-7"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Edu Programs
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {% for i in programs %}
+                <a class="dropdown-item" href="{% url 'web:programs' i.slug %}">{{i.course_name}}</a>
+                {% endfor %}
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contacts</a>
+            </li>
+           
+
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              {% for link in social %}
+              <a class="socio_icon" href="#"><i class="fa fa-{{link.platform}}"></i></a>
+              {% endfor %}
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+      <!-- / Navigation -->
+    </div> <!-- .container -->
+
+    <!-- Inner Wrapper -->
+    <div class="inner-wrapper mt-auto mb-auto container">
+      <div class="row">
+        <div class="col-md-7">
+          <h1 class="welcome-heading display-4 text-white">Educational Programs</h1>
+          <p class="text-white">We can help you take your idea from concept to shipping using the latest technologies
+            and best practices available.</p>
+          <a href="#about" class="btn btn-lg btn-outline-white btn-pill align-self-center">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <!-- / Inner Wrapper -->
+  </div>
+  <!-- / Welcome Section -->
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about section py-4">
+      <h3 class="section-title text-center m-5">About Excel Edu</h3>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-md-12 testimonial text-center">
+            <div id="introduction" class="container mb-5">
+              <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+                <p class="lead"><b>Excel Educational Services</b> centre stands proudly as one of the leading
+                  consultants in terms of MBBS abroad studies. We have supported many students in their immigration
+                  process. We help you to develop a brilliant career through overseas education.<br>
+
+                  In addition to this, we take immense care of all the major and minor processes such as profile
+                  assessment, shortlisting universities, preparing applications, accessing admissions, Visa processes
+                  and so on. Our organized way of working makes us exist among the pioneers in flourishing overseas
+                  education. With us, you get the perfect platform to proceed in the right manner.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / About Section -->
+
+
+
+
+
+  <!-- Our Services Section -->
+  <div id="our-services" class="our-services section py-4">
+    <h3 class="section-title text-center my-5">We Offers</h3>
+    <!-- Features -->
+    <div class="features py-4 mb-4">
+      <div class="container">
+        {% if weoffers %}
+
+        <div class="row">
+          {% for weoffer in weoffers  %}
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>{{weoffer.heading}}</h5>
+              <p>{{weoffer.description|safe}}
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+          
+          
+        </div>
+
+        {% else %}
+        <div class="row">
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>Application Process</h5>
+              <p>The process of application is done by us with utmost care and perfection. We undergo every instructions
+                and guidelines provided by the Colleges universities carefully. We take special care in filling the
+                application details and initials in order to avoid mistakes. All you need to do is to provide all the
+                relevant details in the correct data and information.
+              </p>
+            </div>
+          </div>
+          
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>Application Process</h5>
+              <p>The process of application is done by us with utmost care and perfection. We undergo every instructions
+                and guidelines provided by the Colleges universities carefully. We take special care in filling the
+                application details and initials in order to avoid mistakes. All you need to do is to provide all the
+                relevant details in the correct data and information.
+              </p>
+            </div>
+          </div>
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>Proper Assistance</h5>
+              <p>We consider that it is our core duty to assist you in the whole process. Thus, we provide all the
+                relevant help required during the entire procedure such as arrival, departure, Visa, travel,
+                scholarship, accommodation, etc. You can knock us anytime whenever you feel any difficulty in the
+                process, we are there to guide and instruct you.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>Perfect Counselling</h5>
+              <p>With us, you will get the right path to your dreams. Among the list of multiple options, we help you to
+                choose the perfect one for yourself matching your preferences and meeting your parameters such as
+                budget, aptitude, ability, field of interest, etc. We also provide you guidance regarding finance like
+                loans and insurances.</p>
+            </div>
+          </div>
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>Accurate Information</h5>
+              <p>We believe in perfection and invest our time in collecting all the information perfectly. We use the
+                right resources to get the correct and accurate information regarding the different universities— its
+                environment, eligibility criteria, qualifications, application process, admission requirements, arrival
+                procedures and many more.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>Career Planning</h5>
+              <p>As you finish your MBBS course, we guide you ahead for further studies. You can consult our experienced
+                mentors regarding post-graduation courses, and they will help you with apt solutions.</p>
+            </div>
+          </div>
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>Financial Advice</h5>
+              <p>Studying abroad sounds nice until parents face a financial crisis. So we are here to help you manage
+                all the tuition fees, from food expenses to air tickets. So contact Eklavya and do not compromise your
+                dreams.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>Visa and Admission</h5>
+              <p>Studying abroad requires you to get a visa. At Eklavya, we assist you with the course details and guide
+                you to apply for a visa and prepare the related documents.</p>
+            </div>
+          </div>
+          <div class="feature py-4 col-md-6 d-flex">
+            <div class="icon text-primary mr-3"><i class="fa fa-check"></i></div>
+            <div class="px-4">
+              <h5>Accommodations</h5>
+              <p>Not surprisingly, travel and accommodations are two significant concerns when studying abroad. If you
+                contact us, we will help you book flight tickets, find suitable accommodations near the university.</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- / Features -->
+  </div>
+  <!-- / Our Services Section -->
+
+  <!-- Our Courses Section -->
+  <div class="courses section section-invert py-4">
+    <h3 class="section-title text-center m-5">Educational Programs</h3>
+
+    <div class="container">
+      <div class="py-4">
+        <div class="row">
+          
+
+            {% for program in programs %}
+            <div class="col-md-12 col-lg-4">
+              <div class="card mb-4">
+                <img class="card-img-top" src="{{program.image.url}}" alt="{{program.course_name}}">
+                <div class="card-body">
+                  <h4 class="card-title">{{program.course_name}}</h4>
+                  <p class="card-text"></p>
+                 
+                  <a class="btn btn-primary btn-pill" href="{% url 'web:programs' program.slug %}">Read More &rarr;</a>
+                 
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            
+
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / Our Blog Section -->
+
+  <!-- Testimonials Section -->
+  <div class="testimonials section py-4">
+    <h3 class="section-title text-center m-5">Why Study MBBS Abroad?</h3>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-4 testimonial text-center">
+          <div class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto">
+            <img src="{% static 'web/images/low-tuition-fees.png' %}" class="w-100" alt=" " />
+          </div>
+          <h5 class="mb-1">Low Tuition Fees</h5>
+          <p>Studying MBBS abroad doesn’t require paying a huge amount of fees. When you apply via Excel, you can
+            experience a low tuition fee structure and minimal living cost</p>
+        </div>
+
+        <div class="col-md-4 testimonial text-center">
+          <div class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto">
+            <img src="{% static 'web/images/top-medical-universities.png' %}" class="w-100" alt=" " />
+          </div>
+          <h5 class="mb-1">Top Medical Universities</h5>
+          <p>Our mentors get you seats in the high-ranked international universities for higher studies. Just connect
+            with our expert faculty, and we will help you chase your dreams.</p>
+        </div>
+
+        <div class="col-md-4 testimonial text-center">
+          <div class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto">
+            <img src="{% static 'web/images/nmc.png' %}" class="w-100" alt="Testimonial Avatar" />
+          </div>
+          <h5 class="mb-1">NMC/WHO Approved</h5>
+          <p>When you opt for higher studies abroad, try to get admitted to universities approved by WHO or NMC. You
+            need to complete your course from any authorized university.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 testimonial text-center">
+          <div class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto">
+            <img src="{% static 'web/images/no-entrance-exam.png' %}" class="w-100" alt=" " />
+          </div>
+          <h5 class="mb-1">No Entrance Exam</h5>
+          <p>No worries about entrance examinations while applying for further studies abroad. If you meet the
+            eligibility criteria, you can apply for the course.</p>
+        </div>
+
+        <div class="col-md-4 testimonial text-center">
+          <div class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto">
+            <img src="{% static 'web/images/donations.png' %}" class="w-100" alt=" " />
+          </div>
+          <h5 class="mb-1">No Donation Required</h5>
+          <p>There will be no donation or hidden charges except for the fee structure when you apply for MBBS courses
+            abroad</p>
+        </div>
+
+        <div class="col-md-4 testimonial text-center">
+          <div class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto">
+            <img src="{% static 'web/images/study-in-english-medium.png' %}" class="w-100" alt="Testimonial Avatar" />
+          </div>
+          <h5 class="mb-1">Study in English Medium</h5>
+          <p>Studying MBBS abroad doesn’t require paying a huge amount of fees. When you apply via Eklavya, you can
+            experience a low tuition fee structure and minimal living cost</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- / Testimonials Section -->
+
+  <!-- Contact Section -->
+  <div id="contact" class="contact section-invert py-4">
+    <h3 class="section-title text-center m-5">Contact Us</h3>
+    <div class="container py-4">
+      <div class="row justify-content-md-center px-4">
+        <div class="contact-form col-sm-12 col-md-10 col-lg-7 p-4 mb-4 card">
+          <form method="post" class="form contact" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="contactFormFullName">Full Name</label>
+                {{form.name}}
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="contactFormEmail">Email address</label>
+                {{form.email}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="exampleInputMessage1">Message</label>
+                {{form.message}}
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-pill d-flex ml-auto mr-auto" type="submit" value="Send Your Message"><span>Send Your Message</span></button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / Contact Section -->
+
+  <!-- Footer CTA -->
+  <div class="footer-cta bg-dark">
+    <div class="container mt-5">
+      <div class="py-3">
+
+        <div class="share d-table ml-auto mr-auto my-3">
+          <a href="#" class="btn btn-pill btn-primary mr-4 mb-2" title="Share Shards on Twitter">
+            <i class="fa fa-whatsapp mr-1"></i> +971 50 8489 313</a>
+          <a href="#" class="btn btn-pill btn-primary mr-4 mb-2" title="Email">
+            <i class="fa fa-envelope-o mr-1"></i> muhsi@xluae.com</a>
+          <a href="#" class="btn btn-pill btn-primary mr-4 mb-2" title="Share on LinkedIn">
+            <i class="fa fa-map-marker mr-1"></i> Dubai - Silicon Oasis Authority</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Section -->
+  <footer class="main-footer py-5">
+    <p class="text-muted text-center small p-0 mb-4">&copy; Copyright 2017 — Excel Educational Services</p>
+    <div class="social d-table ml-auto mr-auto">
+      {% for link in social %}
+      <a class="twitter mx-3 h4" href="#" target="_blank">
+          <i class="fa fa-{{link.platform}}"></i>
+      </a>
+      {% endfor %}
+    </div>
+  </footer>
+  <!-- / Footer Section -->
+
+  <!-- JavaScript Dependencies -->
+  <!-- JavaScript Dependencies -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.15.3/dist/sweetalert2.all.min.js"></script>
+  <script src="{% static 'web/js/form.js' %}"></script>
+</body>
+
+</html>

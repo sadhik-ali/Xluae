@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>EXCEL - Educational Services</title>
+    <link rel="icon" href="{% static 'web/images/favicon.png' %}" type="image/x-icon" />
+    <meta name="description" content="Excel Educational Services">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'web/css/excel.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/excel-extras.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/magazine.css' %}">
+</head>
+
+<body class="excel-landing-page">
+    <!-- Welcome Section -->
+    <div class=" d-flex justify-content-center flex-column" style="background-color: black;">
+        <div class="container">
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark pt-4 px-0">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'web/images/excel.png' %}" class="mr-2" alt="Excel">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'web:football_academy' %}">Football Academy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'web:magazine' %}">Edu Magazine</a>
+                          </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href=""
+                                id="navbarDropdownMenuLink-7" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Edu Programs
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {% for i in programs %}
+                                <a class="dropdown-item" href="{% url 'web:programs' i.slug %}">{{i.course_name}}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'web:contact' %}">Contacts</a>
+                        </li>
+
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            {% for link in social %}
+                            <a class="socio_icon" href="#"><i class="fa fa-{{link.platform}}"></i></a>
+                            {% endfor %}
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <!-- / Navigation -->
+        </div> <!-- .container -->
+
+        
+<!-- slider-start -->
+    <div class="slider-area pos-relative">
+        <div class="slider-active">
+            <div class="single-slider slider-height d-flex align-items-center justify-content-center" style="background-image: url(https://wphix.com/template/sikkha-prv/sikkha/img/slider/slider_bg_1.jpg);">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 col-md-12">
+                            <div class="slider-content slider-content-2">
+                                <h1 class="white-color f-700" data-animation="fadeInUp" data-delay=".2s"><span>EDU MAGAZINW</span><br>Eduara University</h1>
+                                <p data-animation="fadeInUp" data-delay=".4s">Sorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua enim ad minime.</p>
+                                <button class="theme-btn" data-animation="fadeInUp" data-delay=".6s"><span class="btn-text"><a href="{% url 'web:magazine_detail' %}">Read Online</a></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <!-- slider-end -->
+
+    <div class=" d-flex justify-content-center flex-column" style="background-color: black;">
+        <section style="background-color: white">
+          <div class="testimonials section py-4">
+            <div class="container py-5">
+          <div class="row">
+            {% for magazine in magazines %}
+            <div class="col-lg-3 col-md-6 col-6 mb-2">
+                <div class="card">
+                    <img src="{{magazine.image.url}}" class="card-img-top" alt="img">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ magazine.name }}</h5>
+                        <p class="card-text" style="font-weight: bold;">{{ magazine.month }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    
+
+          </div>
+        </div>
+
+    </section>
+
+
+        <footer class="main-footer py-5">
+          <p class="text-muted text-center small p-0 mb-4">&copy; Copyright 2017 — Excel Educational Services</p>
+          <div class="social d-table ml-auto mr-auto">
+              {% for link in social %}
+              <a class="twitter mx-3 h4" href="#" target="_blank">
+                  <i class="fa fa-{{link.platform}}"></i>
+              </a>
+              {% endfor %}
+  
+             
+          </div>
+      </footer>
+      <script>
+        
+      </script>
+      <!-- / Footer Section -->
+  
+      <!-- JavaScript Dependencies -->
+      <!-- JavaScript Dependencies -->
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.15.3/dist/sweetalert2.all.min.js"></script>
+      <script src="{% static 'web/js/form.js' %}"></script>
+  </body>
+  
+  </html>
